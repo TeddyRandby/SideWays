@@ -43,8 +43,6 @@ class SideWayMap extends Map<Way, Sideway[]> {
 
 
 function upsertWay(target: any, property: string, field: PropertyDescriptor, way: Way): void {
-  console.log(`Upserting Way ${String(way)} for property '${property}'`)
-
   if (Reflect.hasMetadata(WAY_METADATA_KEY, target)) {
     const ways: WaySet = Reflect.getMetadata(WAY_METADATA_KEY, target)
 
@@ -61,8 +59,6 @@ function upsertWay(target: any, property: string, field: PropertyDescriptor, way
 }
 
 function registerSideWay(target: any, property: string, method: PropertyDescriptor, ways: Way[]): void {
-  console.log(`Registering SideWay ${String(property)} for ways ${ways.join()}`)
-
   if (Reflect.hasMetadata(SIDEWAY_METADATA_KEY, target)) {
     const sideWays: SideWayMap = Reflect.getMetadata(SIDEWAY_METADATA_KEY, target)
 
@@ -122,13 +118,10 @@ export function GoSideWays(): any {
           waySet.forEach((ways, property) => {
             if (wayArg[property] === undefined) return
 
-            console.log(`Found property ${String(property)} with ways`, ways)
-
             ways.forEach(way => {
               const sideWays = getSideWays(target, way)
 
               for (const sideway of sideWays) {
-                console.log(`Applying ${String(sideway.name)} for ${String(way)}`)
                 sideway.effect.apply(this, [wayArg])
               }
             })

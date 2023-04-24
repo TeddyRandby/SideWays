@@ -70,7 +70,7 @@ export class PostService {
 
 }
 
-const post = new Post({ id: `1`, content: `Hello world`, followers: [`user1`, `user2`] })
+const post = new Post({ id: `1`, content: `Hello world`, author: `Teddy Randby`, followers: [`user1`, `user2`], comments: [] })
 
 const postService = new PostService()
 
