@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node test/simple.ts"
+    "example": "ts-node examples/simple.ts"
   },
   "author": "",
   "license": "ISC",
